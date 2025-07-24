@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Cart</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .product-card { border: 1px solid #ccc; padding: 20px; margin: 10px; width: 300px; }
+        .btn { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+        #cart-info { margin-top: 20px; padding: 20px; background: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <h1>Debug Cart Functionality</h1>
+    
+    <div class="product-card">
+        <h3 class="product-title">Arduino Uno R3</h3>
+        <p class="product-category">Placas de Desarrollo</p>
+        <p class="product-price">₲120.000</p>
+        <button class="btn add-to-cart">🛒 Añadir al Carrito</button>
+    </div>
+    
+    <div class="product-card">
+        <h3 class="product-title">Sensor DHT22</h3>
+        <p class="product-category">Sensores</p>
+        <p class="product-price">₲45.000</p>
+        <button class="btn add-to-cart">🛒 Añadir al Carrito</button>
+    </div>
+    
+    <div id="cart-info">
+        <h3>Cart Info:</h3>
+        <p>Items en carrito: <span id="cart-count">0</span></p>
+        <button onclick="showCart()">Mostrar Carrito</button>
+        <button onclick="clearCart()">Limpiar Carrito</button>
+        <div id="cart-details"></div>
+    </div>
+    
+    <script>
+        // Initialize cart
+        let cart = JSON.parse(localStorage.getItem('supernovaCart')) || [];
+        console.log('Cart inicial:', cart);
+        
+        // Update display
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            console.log('Cart display actualizado:', totalItems);
+        }
+        
+        // Add to cart function
+        function addToCart(title, price) {
+            console.log('=== addToCart llamada ===');
+            console.log('Título:', title);
+            console.log('Precio:', price);
+            console.log('Cart antes:', JSON.stringify(cart));
+            
+            const existingItem = cart.find(item => item.title === title);
+            if (existingItem) {
+                existingItem.quantity += 1;
+                console.log('Producto existente, cantidad incrementada');
+            } else {
+                cart.push({ title, price, quantity: 1 });
+                console.log('Nuevo producto añadido');
+            }
+            
+            console.log('Cart después:', JSON.stringify(cart));
+            
+            localStorage.setItem('supernovaCart', JSON.stringify(cart));
+            console.log('Guardado en localStorage');
+            
+            updateCartDisplay();
+            console.log('=== Fin addToCart ===');
+        }
+        
+        // Show cart contents
+        function showCart() {
+            const details = document.getElementById('cart-details');
+            details.innerHTML = '<h4>Contenido del carrito:</h4>' + 
+                cart.map(item => `<p>${item.title} - ₲${item.price} x ${item.quantity}</p>`).join('');
+        }
+        
+        // Clear cart
+        function clearCart() {
+            cart = [];
+            localStorage.removeItem('supernovaCart');
+            updateCartDisplay();
+            showCart();
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado');
+            updateCartDisplay();
+            
+            // Add event listeners
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            console.log('Botones encontrados:', addToCartButtons.length);
+            
+            addToCartButtons.forEach((button, index) => {
+                console.log('Configurando botón', index);
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('=== CLICK DETECTADO ===');
+                    
+                    const productCard = this.closest('.product-card');
+                    const productTitle = productCard.querySelector('.product-title').textContent;
+                    const productPrice = productCard.querySelector('.product-price').textContent;
+                    
+                    console.log('Datos extraídos:');
+                    console.log('- Título:', productTitle);
+                    console.log('- Precio texto:', productPrice);
+                    
+                    const priceValue = parseInt(productPrice.replace(/[^0-9]/g, ''));
+                    console.log('- Precio procesado:', priceValue);
+                    
+                    addToCart(productTitle, priceValue);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

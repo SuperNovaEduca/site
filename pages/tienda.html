@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - Supernova Educación</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🚀</span>
+                <span class="brand-text">Supernova Educación</span>
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link">Inicio</a>
+                <a href="../pages/proyectos.html" class="nav-link">Proyectos</a>
+                <a href="../pages/tienda.html" class="nav-link active">Tienda</a>
+                <a href="../pages/cursos.html" class="nav-link">Cursos</a>
+            </div>
+            <div class="nav-toggle">
+                <button class="btn btn-primary" id="cart-toggle" style="margin-right: 1rem;">🛒 <span id="cart-count">0</span></button>
+                <span class="toggle-icon" id="theme-toggle">🌙</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Store Section -->
+    <section id="tienda" class="store">
+        <div class="container">
+            <div class="store-header">
+                <h2 class="section-title">Todos los Productos</h2>
+                <div class="store-controls">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-input">
+                    </div>
+                    <div class="sort-dropdown">
+                        <label>Ordenar por:</label>
+                        <select id="sortBy" class="sort-select">
+                            <option>Relevancia</option>
+                            <option>Precio: Menor a Mayor</option>
+                            <option>Precio: Mayor a Menor</option>
+                            <option>Más Nuevos</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="store-layout">
+                <div class="filters-sidebar">
+                    <h3>Filtros</h3>
+                    
+                    <div class="filter-group">
+                        <h4>Categorías</h4>
+                        <div class="filter-options">
+                            <label><input type="checkbox" id="category-all" checked> Todos</label>
+                            <label><input type="checkbox" id="category-placas"> Placas de Desarrollo</label>
+                            <label><input type="checkbox" id="category-sensores"> Sensores</label>
+                            <label><input type="checkbox" id="category-actuadores"> Actuadores</label>
+                            <label><input type="checkbox" id="category-displays"> Displays</label>
+                            <label><input type="checkbox" id="category-modulos"> Módulos</label>
+                            <label><input type="checkbox" id="category-kits"> Kits y Packs</label>
+                            <label><input type="checkbox" id="category-accesorios"> Accesorios</label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Precio</h4>
+                        <div class="price-range">
+                            <input type="range" id="priceRange" min="0" max="1000000" value="1000000" class="price-slider">
+                            <div class="price-labels">
+                                <span>₲0</span>
+                                <span id="maxPriceLabel">₲1.000.000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4>Disponibilidad</h4>
+                        <div class="filter-options">
+                            <label><input type="checkbox" id="availability-stock" checked> En Stock</label>
+                            <label><input type="checkbox" id="availability-out" checked> Agotado</label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-actions">
+                        <button class="btn btn-primary filter-apply" id="applyFilters">Aplicar Filtros</button>
+                        <button class="btn btn-secondary filter-reset" id="resetFilters">Restablecer</button>
+                    </div>
+                </div>
+                
+                <div class="products-container">
+                    <div class="products-grid">
+                        <!-- Placas de Desarrollo -->
+                        <div class="product-card" data-category="Placas de Desarrollo" data-price="185000" data-available="true">
+                            <div class="product-image">
+                                <img src="../images/arduino-uno.svg" alt="Arduino Uno R3" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="placeholder-image" style="display:none">300 × 300</div>
+                            </div>
+                            <h3 class="product-title">Arduino Uno R3</h3>
+                            <p class="product-category">Placas de Desarrollo</p>
+                            <p class="product-description" style="display: none;">La placa Arduino clásica, perfecta tanto para principiantes como para expertos. La plataforma ideal para innumerables proyectos de electrónica.</p>
+                            <p class="product-price">₲185.000</p>
+                            <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+                        </div>
+                        
+                        <div class="product-card" data-category="Placas de Desarrollo" data-price="410000" data-available="true">
+                            <div class="product-image">
+                                <img src="../images/raspberry-pi-zero.svg" alt="Raspberry Pi 4" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="placeholder-image" style="display:none">300 × 300</div>
+                            </div>
+                            <h3 class="product-title">Raspberry Pi 4 Model B (4GB)</h3>
+                            <p class="product-category">Placas de Desarrollo</p>
+                            <p class="product-description" style="display: none;">Computadora de placa única con gran potencia de procesamiento, perfecta para proyectos complejos y aplicaciones educativas.</p>
+                            <p class="product-price">₲410.000</p>
+                            <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+                        </div>
+                        
+                        <div class="product-card" data-category="Placas de Desarrollo" data-price="120000" data-available="true">
+                            <div class="product-image">
+                                <img src="../images/arduino-nano.svg" alt="Arduino Nano" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="placeholder-image" style="display:none">300 × 300</div>
+                            </div>
+                            <h3 class="product-title">Arduino Nano</h3>
+                            <p class="product-category">Placas de Desarrollo</p>
+                            <p class="product-description" style="display: none;">Versión compacta del Arduino Uno, ideal para proyectos donde el espacio es limitado pero se necesita toda la funcionalidad.</p>
+                            <p class="product-price">₲120.000</p>
+                            <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+                        </div>
+
+                        <!-- Sensores -->
+                        <div class="product-card" data-category="Sensores" data-price="30000" data-available="true">
+                            <div class="product-image">
+                                <img src="../images/sensor-kit.svg" alt="Sensor HC-SR04" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="placeholder-image" style="display:none">300 × 300</div>
+                            </div>
+                            <h3 class="product-title">Sensor HC-SR04</h3>
+                            <p class="product-category">Sensores</p>
+                            <p class="product-description" style="display: none;">Sensor de distancia por ultrasonido con rango de 2cm a 4m, ideal para proyectos de robótica y automatización.</p>
+                            <p class="product-price">₲30.000</p>
+                            <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+                        </div>
+                        
+                        <div class="product-card" data-category="Sensores" data-price="45000" data-available="true">
+                            <div class="product-image">
+                                <img src="../images/sensor-kit.svg" alt="Sensor DHT22" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="placeholder-image" style="display:none">300 × 300</div>
+                            </div>
+                            <h3 class="product-title">Sensor de Temperatura DHT22</h3>
+                            <p class="product-category">Sensores</p>
+                            <p class="product-description" style="display: none;">Sensor digital de temperatura y humedad de alta precisión, perfecto para estaciones meteorológicas y control ambiental.</p>
+                            <p class="product-price">₲45.000</p>
+                            <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+                        </div>
+                        
+                        <div class="product-card" data-category="Sensores" data-price="25000" data-available="true">
+                            <div class="product-image">
+                                <img src="../images/sensor-kit.svg" alt="Sensor PIR" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="placeholder-image" style="display:none">300 × 300</div>
+                            </div>
+                            <h3 class="product-title">Sensor de Movimiento PIR</h3>
+                            <p class="product-category">Sensores</p>
+                            <p class="product-description" style="display: none;">Sensor infrarrojo pasivo para detección de movimiento, ideal para sistemas de seguridad y automatización del hogar.</p>
+                            <p class="product-price">₲25.000</p>
+                            <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+                        </div>
+
+                        <!-- Actuadores -->
+                        <div class="product-card" data-category="Actuadores" data-price="35000" data-available="true">
+                            <div class="product-image">
+                                <img src="../images/servo-motor.svg" alt="Servomotor SG90" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="placeholder-image" style="display:none">300 × 300</div>
+                            </div>
+                            <h3 class="product-title">Servomotor SG90</h3>
+                            <p class="product-category">Actuadores</p>
+                            <p class="product-description" style="display: none;">Servomotor de precisión de 180 grados, ideal para proyectos de robótica y automatización que requieren control de posición.</p>
+                            <p class="product-price">₲35.000</p>
+                            <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+                        </div>
+                        
+                        <div class="product-card" data-category="Actuadores" data-price="55000" data-available="true">
+                            <div class="product-image">
+                                <img src="../images/servo-motor.svg" alt="Motor DC" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="placeholder-image" style="display:none">300 × 300</div>
+                            </div>
+                            <h3 class="product-title">Motor DC con Caja Reductora</h3>
+                            <p class="product-category">Actuadores</p>
+                            <p class="product-description" style="display: none;">Motor DC de 12V con caja reductora, perfecto para proyectos de robótica móvil y sistemas que requieren alto torque.</p>
+                            <p class="product-price">₲55.000</p>
+                            <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+                        </div>
+                        
+                        <div class="product-card" data-category="Actuadores" data-price="15000" data-available="true">
+                            <div class="product-image">
+                                <img src="../images/relay-module.svg" alt="Relé 5V" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="placeholder-image" style="display:none">300 × 300</div>
+                            </div>
+                            <h3 class="product-title">Relé 5V</h3>
+                            <p class="product-category">Actuadores</p>
+                            <p class="product-description" style="display: none;">Módulo relé de 5V para control de cargas de alta potencia, ideal para automatización del hogar y control de dispositivos.</p>
+                            <p class="product-price">₲15.000</p>
+                            <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+                        </div>
+
+                        <!-- Kits y Packs -->
+                        <div class="product-card sold-out" data-category="Kits y Packs" data-price="375000" data-available="false">
+                            <div class="product-image">
+                                <img src="../images/starter-kit.svg" alt="Kit de Inicio" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="placeholder-image" style="display:none">300 × 300</div>
+                                <div class="sold-out-badge">AGOTADO</div>
+                            </div>
+                            <h3 class="product-title">Kit de Inicio de Electrónica</h3>
+                            <p class="product-category">Kits y Packs</p>
+                            <p class="product-price">₲375.000</p>
+                            <button class="btn btn-secondary add-to-cart">📞 Solicitar Producto</button>
+                        </div>
+                        
+                        <div class="product-card" data-category="Kits y Packs" data-price="450000" data-available="true">
+                            <div class="product-image">
+                                <img src="../images/starter-kit.svg" alt="Kit Robótica" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="placeholder-image" style="display:none">300 × 300</div>
+                            </div>
+                            <h3 class="product-title">Kit Robótica Básica</h3>
+                            <p class="product-category">Kits y Packs</p>
+                            <p class="product-description" style="display: none;">Kit completo para construir tu primer robot, incluye chasis, motores, sensores y todos los componentes necesarios para empezar.</p>
+                            <p class="product-price">₲450.000</p>
+                            <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+                        </div>
+                        
+                        <div class="product-card" data-category="Kits y Packs" data-price="280000" data-available="true">
+                            <div class="product-image">
+                                <img src="../images/sensor-kit.svg" alt="Kit Sensores" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="placeholder-image" style="display:none">300 × 300</div>
+                            </div>
+                            <h3 class="product-title">Kit Sensores Avanzados</h3>
+                            <p class="product-category">Kits y Packs</p>
+                            <p class="product-description" style="display: none;">Colección de sensores especializados para proyectos avanzados, incluye sensores de gas, presión, acelerómetro y más.</p>
+                            <p class="product-price">₲280.000</p>
+                            <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="pagination-container">
+                        <div class="pagination">
+                            <button class="pagination-btn" id="prev-page" disabled>« Anterior</button>
+                            <div class="pagination-numbers" id="pagination-numbers">
+                                <button class="pagination-number active">1</button>
+                            </div>
+                            <button class="pagination-btn" id="next-page" disabled>Siguiente »</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Supernova Educación</h3>
+                    <p>Tu tienda especializada en componentes Arduino y electrónica.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">📺</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="../index.html#proyectos">Proyectos</a></li>
+                        <li><a href="../pages/tienda.html">Tienda</a></li>
+                        <li><a href="../pages/cursos.html">Cursos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>📍 Av. Tecnología 123, Ciudad</p>
+                    <p>📞 +595 991 123456</p>
+                    <p>✉️ info@supernova.com.py</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Supernova Educación. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tu Carrito</h2>
+                <span class="close" id="close-cart">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items"></div>
+                <div class="cart-total">
+                    <strong>Total: ₲<span id="cart-total">0</span></strong>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="clear-cart">Vaciar Carrito</button>
+                <button class="btn btn-primary" id="checkout-cart">Solicitar por WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Preview Modal -->
+    <div id="product-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-product-title"></h2>
+                <span class="close" id="close-product">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="product-preview">
+                    <img id="modal-product-image" src="" alt="">
+                    <div class="product-details">
+                        <p id="modal-product-category"></p>
+                        <p id="modal-product-description"></p>
+                        <p class="product-price" id="modal-product-price"></p>
+                        <button class="btn btn-primary" id="modal-add-to-cart">Añadir al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0e7490;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#grad1)" />
+  
+  <!-- Impresora 3D -->
+  <g transform="translate(300, 200)">
+    <!-- Marco de la impresora -->
+    <rect x="-80" y="-100" width="160" height="180" fill="#333" rx="5" />
+    <rect x="-70" y="-90" width="140" height="160" fill="#222" rx="3" />
+    
+    <!-- Plataforma de impresión -->
+    <rect x="-60" y="40" width="120" height="10" fill="#444" />
+    
+    <!-- Cabezal de impresión -->
+    <g transform="translate(0, -20)">
+      <rect x="-15" y="-15" width="30" height="30" fill="#666" rx="2" />
+      <circle cx="0" cy="5" r="3" fill="#ff6b6b" />
+    </g>
+    
+    <!-- Ejes X, Y, Z -->
+    <line x1="-70" y1="-20" x2="70" y2="-20" stroke="#888" stroke-width="3" />
+    <line x1="0" y1="-90" x2="0" y2="40" stroke="#888" stroke-width="3" />
+    <line x1="-60" y1="-50" x2="60" y2="-50" stroke="#888" stroke-width="3" opacity="0.5" />
+    
+    <!-- Objeto siendo impreso -->
+    <g transform="translate(0, 30)">
+      <path d="M-20,-10 L20,-10 L10,10 L-10,10 Z" fill="#3b82f6" />
+      <path d="M-10,10 L10,10 L5,20 L-5,20 Z" fill="#2563eb" />
+      <path d="M-20,-10 L-10,10 L-5,20 L-15,0 Z" fill="#1d4ed8" />
+      <path d="M20,-10 L10,10 L5,20 L15,0 Z" fill="#1e40af" />
+    </g>
+  </g>
+  
+  <!-- Pantalla de diseño CAD -->
+  <g transform="translate(150, 150)">
+    <rect x="-80" y="-60" width="160" height="120" rx="5" fill="#f0f0f0" />
+    <rect x="-75" y="-55" width="150" height="110" rx="3" fill="#0f172a" />
+    
+    <!-- Diseño 3D en pantalla -->
+    <g transform="translate(0, 0) scale(0.8)" fill="none" stroke="#3b82f6" stroke-width="1.5">
+      <path d="M-20,-10 L20,-10 L10,10 L-10,10 Z" />
+      <path d="M-10,10 L10,10 L5,20 L-5,20 Z" />
+      <path d="M-20,-10 L-10,10 L-5,20 L-15,0 Z" />
+      <path d="M20,-10 L10,10 L5,20 L15,0 Z" />
+      
+      <!-- Líneas de dimensión -->
+      <line x1="-25" y1="-10" x2="-25" y2="20" stroke="#22d3ee" stroke-width="1" />
+      <line x1="25" y1="-10" x2="25" y2="20" stroke="#22d3ee" stroke-width="1" />
+      <line x1="-25" y1="-15" x2="25" y2="-15" stroke="#22d3ee" stroke-width="1" />
+      <text x="0" y="-20" font-family="Arial" font-size="8" fill="#22d3ee" text-anchor="middle">40mm</text>
+    </g>
+    
+    <!-- Interfaz CAD -->
+    <g transform="translate(-65, -45)" fill="#64748b">
+      <rect x="0" y="0" width="10" height="10" rx="2" />
+      <rect x="15" y="0" width="10" height="10" rx="2" />
+      <rect x="30" y="0" width="10" height="10" rx="2" />
+      <rect x="45" y="0" width="10" height="10" rx="2" />
+    </g>
+  </g>
+  
+  <!-- Flecha de flujo de trabajo -->
+  <g transform="translate(230, 150)">
+    <path d="M0,0 L40,0 L30,-10 L40,0 L30,10 Z" fill="#ffffff" opacity="0.7" />
+  </g>
+  
+  <!-- Pieza terminada -->
+  <g transform="translate(450, 150)">
+    <rect x="-50" y="-40" width="100" height="80" rx="5" fill="#f0f0f0" opacity="0.9" />
+    
+    <!-- Objeto impreso -->
+    <g transform="translate(0, 0) scale(1.2)">
+      <path d="M-20,-10 L20,-10 L10,10 L-10,10 Z" fill="#3b82f6" />
+      <path d="M-10,10 L10,10 L5,20 L-5,20 Z" fill="#2563eb" />
+      <path d="M-20,-10 L-10,10 L-5,20 L-15,0 Z" fill="#1d4ed8" />
+      <path d="M20,-10 L10,10 L5,20 L15,0 Z" fill="#1e40af" />
+    </g>
+  </g>
+  
+  <!-- Flecha de flujo de trabajo -->
+  <g transform="translate(370, 200)">
+    <path d="M0,0 L40,0 L30,-10 L40,0 L30,10 Z" fill="#ffffff" opacity="0.7" />
+  </g>
+</svg>

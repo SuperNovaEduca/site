@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supernova Educación</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🚀</span>
+                <span class="brand-text">Supernova Educación</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#inicio" class="nav-link">Inicio</a>
+                <a href="pages/proyectos.html" class="nav-link">Proyectos</a>
+                <a href="pages/tienda.html" class="nav-link">Tienda</a>
+                <a href="pages/cursos.html" class="nav-link">Cursos</a>
+            </div>
+            <div class="nav-toggle">
+                <span class="toggle-icon" id="theme-toggle">🌙</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+
+    
+    <section id="inicio" class="hero">
+        <div class="hero-background">
+            <img src="images/hero-background.svg" alt="Hero Background" class="hero-bg-image">
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Bienvenido a Supernova</h1>
+            <p class="hero-subtitle">Innova. Construye. Compite. Aprende.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-secondary" onclick="window.location.href='pages/proyectos.html'">Nuestro Trabajo</button>
+                <button class="btn btn-primary" onclick="window.location.href='pages/tienda.html'">Comenzar Electrónica</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="proyectos" class="projects">
+        <div class="container">
+            <h2 class="section-title">Nuestros Proyectos</h2>
+            <p class="section-subtitle">Explora los innovadores proyectos de robótica desarrollados por el equipo Supernova.</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/recycling-computers.svg" alt="Tech Voyage">
+                    </div>
+                    <h3 class="project-title">Tech Voyage</h3>
+                    <p class="project-description">Proyecto de reciclaje de computadoras antiguas, instalando Linux para óptimo rendimiento y llevándolas a lugares de bajos recursos.</p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/solar-light.svg" alt="Un Litro de Luz">
+                    </div>
+                    <h3 class="project-title">Un Litro de Luz</h3>
+                    <p class="project-description">Iniciativa para llevar luz a comunidades sin acceso a electricidad, utilizando paneles solares, secuencias de LEDs, baterías y botellas con agua y cloro como difusores.</p>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/interactive-learning.svg" alt="SmartTouch">
+                    </div>
+                    <h3 class="project-title">SmartTouch</h3>
+                    <p class="project-description">Sistema de aprendizaje interactivo que usa Makey Makey para conectar cajas o maquetas con contactos, creando una experiencia educativa táctil.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <h2 class="section-title">Mentes Detrás de Supernova</h2>
+            <p class="section-subtitle">Somos un equipo apasionado de innovadores y solucionadores de problemas dedicados a superar los límites de la robótica.</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <img src="images/team-avatar.svg" alt="Alejandro Portilla">
+                    </div>
+                    <h3 class="member-name">Alejandro Portilla</h3>
+                    <p class="member-role">Fundador</p>
+                    <a href="https://www.instagram.com/pinchyportillo" target="_blank" class="member-handle">@pinchyportillo</a>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <img src="images/team-avatar.svg" alt="Robert Salinas">
+                    </div>
+                    <h3 class="member-name">Robert Salinas</h3>
+                    <p class="member-role">Co-líder y Programador Principal</p>
+                    <a href="https://www.instagram.com/robert_salinas.dev" target="_blank" class="member-handle">@robert.salinas.dev</a>
+                </div>
+            </div>
+            
+            <!-- Achievements Section -->
+            <div class="achievements">
+                <h3 class="achievements-title">Nuestros Logros</h3>
+                <p class="achievements-subtitle">Estamos orgullosos de nuestros logros y contribuciones a la comunidad.</p>
+                
+                <div class="achievements-list">
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🎯</span>
+                        <span class="achievement-text">Proyecto Destacado en la Expo Educación 2024</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🌍</span>
+                        <span class="achievement-text">Reconocimiento del Centro de Sabiduría Mundial a nivel Latinoamérica</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🏆</span>
+                        <span class="achievement-text">Campeonato Departamental y Nacional en la Olimpiada de Scratch 2024</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">💡</span>
+                        <span class="achievement-text">Mejor Proyecto Innovador en Pequeños Inventores</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🏅</span>
+                        <span class="achievement-text">Trofeo Core Values de FLL Paraguay</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🎓</span>
+                        <span class="achievement-text">Acreditación para la Competencia Nacional de Semilleros en Colombia</span>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">📚</span>
+                        <span class="achievement-text">Participación en la Expo Educación y presentación de proyectos ganadores 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Supernova Educación</h3>
+                    <p>Tu tienda especializada en componentes Arduino y electrónica.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">📺</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="pages/proyectos.html">Proyectos</a></li>
+                        <li><a href="pages/tienda.html">Tienda</a></li>
+                        <li><a href="pages/cursos.html">Cursos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>📍 Av. Tecnología 123, Ciudad</p>
+                    <p>📞 +595 991 123456</p>
+                    <p>✉️ info@supernova.com.py</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Supernova Educación. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

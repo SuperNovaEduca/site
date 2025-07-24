@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Carrito</title>
+    <style>
+        .product-card { border: 1px solid #ccc; padding: 20px; margin: 10px; }
+        .add-to-cart { background: blue; color: white; padding: 10px; border: none; cursor: pointer; }
+        #cart-count { background: red; color: white; padding: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Test del Carrito</h1>
+    
+    <div id="cart-toggle">
+        Carrito: <span id="cart-count">0</span>
+    </div>
+    
+    <div class="product-card" data-category="Test" data-price="100000" data-available="true">
+        <h3 class="product-title">Producto de Prueba</h3>
+        <p class="product-price">₲100.000</p>
+        <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+    </div>
+    
+    <div class="product-card" data-category="Test" data-price="200000" data-available="true">
+        <h3 class="product-title">Segundo Producto</h3>
+        <p class="product-price">₲200.000</p>
+        <button class="btn btn-primary add-to-cart">🛒 Añadir al Carrito</button>
+    </div>
+    
+    <script>
+        // Variables globales
+        let cart = [];
+        
+        // Función para actualizar el display del carrito
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cart-count');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            console.log('Cart display actualizado:', totalItems);
+        }
+        
+        // Función para añadir al carrito
+        function addToCart(productTitle, productPrice) {
+            console.log('addToCart llamada con:', productTitle, productPrice);
+            console.log('Cart actual antes de añadir:', cart);
+            
+            const existingItem = cart.find(item => item.title === productTitle);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+                console.log('Producto existente, cantidad incrementada');
+            } else {
+                cart.push({
+                    title: productTitle,
+                    price: productPrice,
+                    quantity: 1
+                });
+                console.log('Nuevo producto añadido');
+            }
+            
+            console.log('Cart después de añadir:', cart);
+            
+            // Save cart to localStorage
+            localStorage.setItem('supernovaCart', JSON.stringify(cart));
+            console.log('Cart guardado en localStorage');
+            
+            updateCartDisplay();
+            console.log('updateCartDisplay ejecutado');
+        }
+        
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM cargado, inicializando...');
+            
+            // Initialize cart from localStorage
+            cart = JSON.parse(localStorage.getItem('supernovaCart')) || [];
+            console.log('Cart inicializado:', cart);
+            
+            // Update cart display
+            updateCartDisplay();
+            
+            // Setup event listeners
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            console.log('Configurando event listeners para', addToCartButtons.length, 'botones');
+            
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Click en botón add-to-cart detectado');
+                    
+                    const productCard = this.closest('.product-card');
+                    const productTitle = productCard.querySelector('.product-title').textContent;
+                    const productPrice = productCard.querySelector('.product-price').textContent;
+                    
+                    console.log('Datos del producto:', { productTitle, productPrice });
+                    const priceValue = parseInt(productPrice.replace(/[^0-9]/g, ''));
+                    console.log('Precio procesado:', priceValue);
+                    
+                    addToCart(productTitle, priceValue);
+                    alert('Producto añadido al carrito!');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

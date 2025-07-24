@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos - Supernova Educación</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🚀</span>
+                <span class="brand-text">Supernova Educación</span>
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link">Inicio</a>
+                <a href="../pages/proyectos.html" class="nav-link">Proyectos</a>
+                <a href="../pages/tienda.html" class="nav-link">Tienda</a>
+                <a href="../pages/cursos.html" class="nav-link active">Cursos</a>
+            </div>
+            <div class="nav-toggle">
+                <span class="toggle-icon" id="theme-toggle">🌙</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Courses Hero Section -->
+    <section class="courses-hero">
+        <div class="container">
+            <div class="courses-hero-content">
+                <h1 class="courses-title">Cursos en Línea</h1>
+                <p class="courses-subtitle">Mejora tus habilidades con nuestros cursos especializados y conviértete en un experto.</p>
+                <p class="courses-description">Se capacita en línea y obtén tu propio diploma! Contáctanos para más detalles.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Grid -->
+    <section class="courses-section">
+        <div class="container">
+            <div class="courses-grid">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="../images/curso-robotica.jpg" alt="Introducción a la Robótica" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="course-placeholder" style="display:none">
+                            <span>600 × 400</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Introducción a la Robótica</h3>
+                        <p class="course-description">Aprende los fundamentos de la robótica, desde la teoría básica hasta la programación práctica con Arduino y sensores.</p>
+                        <div class="course-details">
+                            <span class="course-duration">⏱️ 8 semanas</span>
+                            <span class="course-level">📊 Principiante</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">₲740.000</span>
+                            <button class="btn btn-primary course-btn" onclick="window.open('https://wa.me/595981124456?text=Hola, estoy interesado en inscribirme al curso de Introducción a la Robótica (₲740.000). ¿Podrían darme más información sobre fechas de inicio y modalidades?', '_blank')">📚 Inscribirse Ahora</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="../images/curso-arduino.jpg" alt="C++ Avanzado para Robótica" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="course-placeholder" style="display:none">
+                            <span>600 × 400</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">C++ Avanzado para Robótica</h3>
+                        <p class="course-description">Profundiza en conceptos de programación de C++ aplicados a sistemas robóticos y control de hardware avanzado.</p>
+                        <div class="course-details">
+                            <span class="course-duration">⏱️ 12 semanas</span>
+                            <span class="course-level">📊 Avanzado</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">₲1.115.000</span>
+                            <button class="btn btn-primary course-btn" onclick="window.open('https://wa.me/595981124456?text=Hola, estoy interesado en inscribirme al curso de C++ Avanzado para Robótica (₲1.115.000). ¿Podrían darme más información sobre fechas de inicio y modalidades?', '_blank')">📚 Inscribirse Ahora</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="../images/curso-vision.jpg" alt="Visión por Computadora con OpenCV" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="course-placeholder" style="display:none">
+                            <span>600 × 400</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Visión por Computadora con OpenCV</h3>
+                        <p class="course-description">Aprende a implementar sistemas de visión artificial usando OpenCV, desde detección básica hasta reconocimiento avanzado.</p>
+                        <div class="course-details">
+                            <span class="course-duration">⏱️ 10 semanas</span>
+                            <span class="course-level">📊 Intermedio</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">₲985.000</span>
+                            <button class="btn btn-primary course-btn" onclick="window.open('https://wa.me/595981124456?text=Hola, estoy interesado en inscribirme al curso de Visión por Computadora con OpenCV (₲985.000). ¿Podrían darme más información sobre fechas de inicio y modalidades?', '_blank')">📚 Inscribirse Ahora</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="../images/curso-iot.jpg" alt="Internet de las Cosas (IoT)" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="course-placeholder" style="display:none">
+                            <span>600 × 400</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Internet de las Cosas (IoT)</h3>
+                        <p class="course-description">Desarrolla proyectos IoT completos conectando sensores, actuadores y servicios en la nube para crear soluciones inteligentes.</p>
+                        <div class="course-details">
+                            <span class="course-duration">⏱️ 14 semanas</span>
+                            <span class="course-level">📊 Intermedio</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">₲1.250.000</span>
+                            <button class="btn btn-primary course-btn" onclick="window.open('https://wa.me/595981124456?text=Hola, estoy interesado en inscribirme al curso de Internet de las Cosas (IoT) (₲1.250.000). ¿Podrían darme más información sobre fechas de inicio y modalidades?', '_blank')">📚 Inscribirse Ahora</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 5 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="../images/curso-ai.jpg" alt="Inteligencia Artificial Aplicada" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="course-placeholder" style="display:none">
+                            <span>600 × 400</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Inteligencia Artificial Aplicada</h3>
+                        <p class="course-description">Implementa algoritmos de IA en sistemas embebidos y aprende machine learning para robótica y automatización.</p>
+                        <div class="course-details">
+                            <span class="course-duration">⏱️ 16 semanas</span>
+                            <span class="course-level">📊 Avanzado</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">₲1.450.000</span>
+                            <button class="btn btn-primary course-btn" onclick="window.open('https://wa.me/595981124456?text=Hola, estoy interesado en inscribirme al curso de Inteligencia Artificial Aplicada (₲1.450.000). ¿Podrían darme más información sobre fechas de inicio y modalidades?', '_blank')">📚 Inscribirse Ahora</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 6 -->
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="../images/curso-drones.jpg" alt="Desarrollo de Drones" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="course-placeholder" style="display:none">
+                            <span>600 × 400</span>
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Desarrollo de Drones</h3>
+                        <p class="course-description">Construye y programa drones desde cero, incluyendo sistemas de navegación, control de vuelo y aplicaciones comerciales.</p>
+                        <div class="course-details">
+                            <span class="course-duration">⏱️ 18 semanas</span>
+                            <span class="course-level">📊 Avanzado</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">₲1.680.000</span>
+                            <button class="btn btn-primary course-btn" onclick="window.open('https://wa.me/595981124456?text=Hola, estoy interesado en inscribirme al curso de Desarrollo de Drones (₲1.680.000). ¿Podrían darme más información sobre fechas de inicio y modalidades?', '_blank')">📚 Inscribirse Ahora</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="courses-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Listo para comenzar tu aprendizaje?</h2>
+                <p>Contáctanos para más información sobre nuestros cursos y programas especializados.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="window.open('https://wa.me/595981124456?text=Hola, me gustaría obtener más información sobre los cursos disponibles en Supernova Educación', '_blank')">📞 Contactar Ahora</button>
+                    <button class="btn btn-secondary" onclick="window.open('mailto:info@supernova.com.py?subject=Solicitud de Información sobre Cursos', '_blank')">📧 Solicitar Información</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Supernova Educación</h3>
+                    <p>Tu tienda especializada en componentes Arduino y electrónica.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">📺</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="../pages/proyectos.html">Proyectos</a></li>
+                        <li><a href="../pages/tienda.html">Tienda</a></li>
+                        <li><a href="../pages/cursos.html">Cursos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>📍 Av. Tecnología 123, Ciudad</p>
+                    <p>📞 +595 991 123456</p>
+                    <p>✉️ info@supernova.com.py</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Supernova Educación. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
