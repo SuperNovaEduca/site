@@ -483,8 +483,15 @@ let searchInput, sortSelect, priceSlider, filterCheckboxes;
     
     window.checkout = function() {
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const cartItems = cart.map(item => `${item.title} x${item.quantity} - ₲${(item.price * item.quantity).toLocaleString()}`).join('\n');
-        const message = `Hola, me gustaría realizar el siguiente pedido:\n\n${cartItems}\n\nTotal: ₲${total.toLocaleString()}\n\n¿Podrían confirmar la disponibilidad y el proceso de pago?`;
+        
+        // Create detailed product list
+        const cartItems = cart.map((item, index) => {
+            const subtotal = item.price * item.quantity;
+            return `${index + 1}. ${item.title}\n   Cantidad: ${item.quantity}\n   Precio unitario: ₲${item.price.toLocaleString()}\n   Subtotal: ₲${subtotal.toLocaleString()}`;
+        }).join('\n\n');
+        
+        const message = `🛒 *PEDIDO SUPERNOVA EDUCACIÓN*\n\n📋 *PRODUCTOS SOLICITADOS:*\n\n${cartItems}\n\n💰 *TOTAL A PAGAR: ₲${total.toLocaleString()}*\n\n¿Podrían confirmar la disponibilidad de estos productos y el proceso de pago? ¡Gracias!`;
+        
         window.open(`https://wa.me/595984529505?text=${encodeURIComponent(message)}`, '_blank');
     }
 
