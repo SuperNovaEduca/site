@@ -129,20 +129,96 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Store functionality
+// Store functionality - Sistema de gestión de stock
+// Para modificar el stock, cambia el valor de 'stock' en cada producto
+// Si stock = 0, el producto aparecerá automáticamente como "agotado"
 const products = [
-    { name: 'Arduino Uno R3', category: 'Placas de Desarrollo', price: 185000, available: true },
-    { name: 'Raspberry Pi 4 Model B (4GB)', category: 'Placas de Desarrollo', price: 410000, available: true },
-    { name: 'Arduino Nano', category: 'Placas de Desarrollo', price: 120000, available: true },
-    { name: 'Sensor HC-SR04', category: 'Sensores', price: 30000, available: true },
-    { name: 'Sensor de Temperatura DHT22', category: 'Sensores', price: 45000, available: true },
-    { name: 'Sensor de Movimiento PIR', category: 'Sensores', price: 25000, available: true },
-    { name: 'Servomotor SG90', category: 'Actuadores', price: 35000, available: true },
-    { name: 'Motor DC con Caja Reductora', category: 'Actuadores', price: 55000, available: true },
-    { name: 'Relé 5V', category: 'Actuadores', price: 15000, available: true },
-    { name: 'Kit de Inicio de Electrónica', category: 'Kits y Packs', price: 375000, available: false },
-    { name: 'Kit Robótica Básica', category: 'Kits y Packs', price: 450000, available: true },
-    { name: 'Kit Sensores Avanzados', category: 'Kits y Packs', price: 280000, available: true }
+    { 
+        
+        
+        name: 'Arduino Uno R3', 
+        category: 'Placas de Desarrollo', 
+        price: 185000, 
+        stock: 0, // Modifica este valor para cambiar el stock
+        description: 'Placa de desarrollo Arduino Uno R3 original con microcontrolador ATmega328P. Ideal para principiantes y proyectos educativos. Incluye 14 pines digitales, 6 entradas analógicas, puerto USB y conector de alimentación. Compatible con miles de librerías y sensores.'
+    },
+    { 
+        name: 'Raspberry Pi 4 Model B (4GB)', 
+        category: 'Placas de Desarrollo', 
+        price: 410000, 
+        stock: 8, // Modifica este valor para cambiar el stock
+        description: 'Computadora de placa única Raspberry Pi 4 con 4GB de RAM. Procesador ARM Cortex-A72 de 64 bits y 1.5GHz. Incluye WiFi dual band, Bluetooth 5.0, puertos USB 3.0, HDMI 4K y GPIO de 40 pines. Perfecta para proyectos IoT y educación.'
+    },
+    { 
+        name: 'Arduino Nano', 
+        category: 'Placas de Desarrollo', 
+        price: 120000, 
+        stock: 25, // Modifica este valor para cambiar el stock
+        description: 'Placa Arduino Nano compacta con microcontrolador ATmega328P. Diseño pequeño y versátil, ideal para proyectos con espacio limitado. Compatible con Arduino IDE, incluye 14 pines digitales y 8 entradas analógicas.'
+    },
+    { 
+        name: 'Sensor HC-SR04', 
+        category: 'Sensores', 
+        price: 30000, 
+        stock: 50, // Modifica este valor para cambiar el stock
+        description: 'Sensor ultrasónico de distancia HC-SR04 con rango de medición de 2cm a 4m. Precisión de 3mm, voltaje de operación 5V. Ideal para proyectos de robótica, sistemas de alarma y medición de distancias. Fácil integración con Arduino.'
+    },
+    { 
+        name: 'Sensor de Temperatura DHT22', 
+        category: 'Sensores', 
+        price: 45000, 
+        stock: 30, // Modifica este valor para cambiar el stock
+        description: 'Sensor digital de temperatura y humedad DHT22 de alta precisión. Rango de temperatura: -40°C a 80°C, humedad: 0-100% RH. Comunicación digital de un solo cable, ideal para estaciones meteorológicas y sistemas de monitoreo ambiental.'
+    },
+    { 
+        name: 'Sensor de Movimiento PIR', 
+        category: 'Sensores', 
+        price: 25000, 
+        stock: 40, // Modifica este valor para cambiar el stock
+        description: 'Sensor de movimiento PIR (infrarrojo pasivo) para detección de presencia humana. Rango de detección hasta 7 metros, ángulo de 120°. Voltaje de operación 3.3V-5V. Perfecto para sistemas de seguridad y automatización del hogar.'
+    },
+    { 
+        name: 'Servomotor SG90', 
+        category: 'Actuadores', 
+        price: 35000, 
+        stock: 35, // Modifica este valor para cambiar el stock
+        description: 'Servomotor micro SG90 de 9g con rotación de 180°. Torque de 1.8 kg/cm, control por PWM. Incluye accesorios de montaje. Ideal para proyectos de robótica, brazos mecánicos y sistemas de posicionamiento preciso.'
+    },
+    { 
+        name: 'Motor DC con Caja Reductora', 
+        category: 'Actuadores', 
+        price: 55000, 
+        stock: 20, // Modifica este valor para cambiar el stock
+        description: 'Motor DC de 6V con caja reductora integrada. Relación de reducción 1:48, velocidad de 200 RPM. Alto torque y bajo consumo. Perfecto para robots móviles, vehículos a control remoto y proyectos que requieren movimiento controlado.'
+    },
+    { 
+        name: 'Relé 5V', 
+        category: 'Actuadores', 
+        price: 15000, 
+        stock: 60, // Modifica este valor para cambiar el stock
+        description: 'Módulo de relé de 5V para control de cargas de alta potencia. Contactos de 10A/250VAC. Incluye LED indicador y optoacoplador para aislamiento. Ideal para automatización del hogar, control de electrodomésticos y sistemas industriales.'
+    },
+    { 
+        name: 'Kit de Inicio de Electrónica', 
+        category: 'Kits y Packs', 
+        price: 375000, 
+        stock: 0, // Modifica este valor para cambiar el stock (0 = agotado)
+        description: 'Kit completo para iniciarse en electrónica y Arduino. Incluye Arduino Uno, breadboard, resistencias, LEDs, sensores básicos, cables jumper y manual de proyectos. Más de 30 componentes para aprender programación y electrónica desde cero.'
+    },
+    { 
+        name: 'Kit Robótica Básica', 
+        category: 'Kits y Packs', 
+        price: 450000, 
+        stock: 12, // Modifica este valor para cambiar el stock
+        description: 'Kit de robótica educativa con chasis de robot, motores, sensores ultrasónicos, módulo Bluetooth y Arduino Uno. Incluye ruedas, tornillería y guía de montaje. Perfecto para construir tu primer robot móvil y aprender programación.'
+    },
+    { 
+        name: 'Kit Sensores Avanzados', 
+        category: 'Kits y Packs', 
+        price: 280000, 
+        stock: 18, // Modifica este valor para cambiar el stock
+        description: 'Colección de 15 sensores avanzados: acelerómetro, giroscopio, sensor de gas, presión barométrica, luz UV, sonido, vibración y más. Incluye módulos de comunicación I2C/SPI y documentación técnica completa.'
+    }
 ];
 
 // Shopping cart
@@ -157,12 +233,75 @@ let productCards = [];
 // DOM elements (global references)
 let searchInput, sortSelect, priceSlider, filterCheckboxes;
     
+    // Función para actualizar el estado de stock de los productos
+    function updateProductStockStatus() {
+        productCards.forEach(card => {
+            const productTitle = card.querySelector('.product-title')?.textContent;
+            const product = products.find(p => p.name === productTitle);
+            
+            if (product) {
+                // Actualizar disponibilidad basada en stock
+                const isAvailable = product.stock > 0;
+                card.dataset.available = isAvailable;
+                
+                // Agregar o quitar clase sold-out
+                if (!isAvailable) {
+                    card.classList.add('sold-out');
+                } else {
+                    card.classList.remove('sold-out');
+                }
+                
+                // Actualizar texto del botón
+                const addToCartBtn = card.querySelector('.add-to-cart');
+                if (addToCartBtn) {
+                    if (!isAvailable) {
+                        addToCartBtn.textContent = 'Consultar Disponibilidad';
+                        addToCartBtn.classList.add('sold-out-btn');
+                    } else {
+                        addToCartBtn.textContent = 'Añadir al Carrito';
+                        addToCartBtn.classList.remove('sold-out-btn');
+                    }
+                }
+                
+                // Agregar indicador de stock junto al precio (solo en las tarjetas, no en el modal)
+                // Verificar que no estamos en el modal y que no es un elemento dentro del modal
+                if (!card.closest('#product-modal') && !card.id.includes('modal')) {
+                    let stockIndicator = card.querySelector('.stock-indicator');
+                    if (!stockIndicator) {
+                        stockIndicator = document.createElement('span');
+                        stockIndicator.className = 'stock-indicator';
+                        stockIndicator.style.marginLeft = '135px';
+                        stockIndicator.style.marginTop = '-40px';
+                        const priceElement = card.querySelector('.product-price');
+                        if (priceElement) {
+                            priceElement.appendChild(stockIndicator);
+                        } else {
+                            // Si no existe .product-price, agregar al final de la tarjeta
+                            card.appendChild(stockIndicator);
+                        }
+                    }
+                    
+                    if (!isAvailable) {
+                        stockIndicator.innerHTML = '<span class="stock-status out-of-stock">🔴 Agotado</span>';
+                    } else if (product.stock <= 5) {
+                        stockIndicator.innerHTML = `<span class="stock-status low-stock">⚠️ Últimas ${product.stock} unidades</span>`;
+                    } else {
+                        stockIndicator.innerHTML = `<span class="stock-status in-stock">✅ ${product.stock} disponibles</span>`;
+                    }
+                }
+            }
+        });
+    }
+
     function initializeStore() {
         // Initialize cart from localStorage
         cart = JSON.parse(localStorage.getItem('supernovaCart')) || [];
         
         // Initialize product cards first
         productCards = Array.from(document.querySelectorAll('.product-card'));
+        
+        // Actualizar estado de stock de productos
+        updateProductStockStatus();
         
         // Initialize cart display
         updateCartDisplay();
@@ -250,6 +389,48 @@ let searchInput, sortSelect, priceSlider, filterCheckboxes;
                 }
             });
         });
+        
+        // Add click event listeners to product images for preview
+        const productImages = document.querySelectorAll('.product-image');
+        productImages.forEach(imageContainer => {
+            imageContainer.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                showProductPreview(productCard);
+            });
+            
+            // Add cursor pointer style
+            imageContainer.style.cursor = 'pointer';
+        });
+        
+        // Add click event listeners to product titles for preview
+        const productTitles = document.querySelectorAll('.product-title');
+        productTitles.forEach(title => {
+            title.addEventListener('click', function() {
+                const productCard = this.closest('.product-card');
+                showProductPreview(productCard);
+            });
+            
+            // Add cursor pointer style
+            title.style.cursor = 'pointer';
+        });
+        
+        // Add event listeners for modal close buttons
+        const closeProductModal = document.getElementById('close-product');
+        if (closeProductModal) {
+            closeProductModal.addEventListener('click', function() {
+                document.getElementById('product-modal').style.display = 'none';
+            });
+        }
+        
+        // Close modal when clicking outside
+        const productModal = document.getElementById('product-modal');
+        if (productModal) {
+            productModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        }
     }
 
     function filterProducts() {
@@ -602,8 +783,13 @@ let searchInput, sortSelect, priceSlider, filterCheckboxes;
         const title = productCard.querySelector('.product-title').textContent;
         const category = productCard.querySelector('.product-category').textContent;
         const price = productCard.querySelector('.product-price').textContent;
-        const description = productCard.querySelector('.product-description')?.textContent || 'Descripción no disponible.';
         const image = productCard.querySelector('.product-image img');
+        
+        // Buscar el producto en el array para obtener descripción y stock
+        const product = products.find(p => p.name === title);
+        const description = product ? product.description : 'Descripción no disponible.';
+        const stock = product ? product.stock : 0;
+        const isAvailable = stock > 0;
         
         document.getElementById('modal-product-title').textContent = title;
         document.getElementById('modal-product-category').textContent = category;
@@ -619,13 +805,57 @@ let searchInput, sortSelect, priceSlider, filterCheckboxes;
             modalImage.alt = 'Imagen no disponible';
         }
         
+        // Eliminar cualquier información de stock existente para evitar duplicación
+        const existingStockInfo = modal.querySelector('.modal-stock-info');
+        if (existingStockInfo) {
+            existingStockInfo.remove();
+        }
+        
+        // Eliminar cualquier indicador de stock que pueda haberse agregado al precio
+        const priceElement = document.getElementById('modal-product-price');
+        const existingStockIndicator = priceElement.querySelector('.stock-indicator');
+        if (existingStockIndicator) {
+            existingStockIndicator.remove();
+        }
+        
+        // Crear nuevo elemento de información de stock
+        const stockInfo = document.createElement('div');
+        stockInfo.className = 'modal-stock-info';
+        // Insertar después de la descripción
+        const descriptionElement = document.getElementById('modal-product-description');
+        descriptionElement.parentNode.insertBefore(stockInfo, descriptionElement.nextSibling);
+        
+        // Establecer el contenido del stock
+        if (!isAvailable) {
+            stockInfo.innerHTML = '🔴 <strong>Producto Agotado</strong>';
+            stockInfo.classList.add('out-of-stock');
+        } else if (stock <= 5) {
+            stockInfo.innerHTML = `⚠️ <strong>Últimas ${stock} unidades disponibles</strong>`;
+            stockInfo.classList.add('low-stock');
+        } else {
+            stockInfo.innerHTML = `✅ <strong>${stock} unidades disponibles</strong>`;
+            stockInfo.classList.add('in-stock');
+        }
+        
         // Set up add to cart button for modal
         const modalAddToCartBtn = document.getElementById('modal-add-to-cart');
-        modalAddToCartBtn.onclick = () => {
-            const priceValue = parseInt(price.replace(/[^0-9]/g, ''));
-            addToCart(title, priceValue);
-            modal.style.display = 'none';
-        };
+        if (!isAvailable) {
+            modalAddToCartBtn.textContent = 'Consultar Disponibilidad';
+            modalAddToCartBtn.onclick = () => {
+                const message = `Hola, estoy interesado en el producto "${title}" que aparece como agotado. ¿Cuándo estará disponible?`;
+                const whatsappUrl = `https://wa.me/595984529505?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+                modal.style.display = 'none';
+            };
+        } else {
+            modalAddToCartBtn.textContent = 'Añadir al Carrito';
+            modalAddToCartBtn.onclick = () => {
+                const priceValue = parseInt(price.replace(/[^0-9]/g, ''));
+                addToCart(title, priceValue);
+                showNotification('Producto añadido al carrito');
+                modal.style.display = 'none';
+            };
+        }
         
         modal.style.display = 'block';
     }
