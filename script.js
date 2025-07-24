@@ -236,7 +236,7 @@ let searchInput, sortSelect, priceSlider, filterCheckboxes;
                     // Open WhatsApp for sold out products
                     const productTitle = productCard.querySelector('.product-title').textContent;
                     const message = `Hola, estoy interesado en el producto "${productTitle}" que aparece como agotado. ¿Cuándo estará disponible?`;
-                    const whatsappUrl = `https://wa.me/1234567890?text=${encodeURIComponent(message)}`;
+                    const whatsappUrl = `https://wa.me/595984529505?text=${encodeURIComponent(message)}`;
                     window.open(whatsappUrl, '_blank');
                 } else {
                     // Add to cart for available products
@@ -359,7 +359,7 @@ let searchInput, sortSelect, priceSlider, filterCheckboxes;
                     </svg>
                     <h3 style="margin: 0 0 0.5rem 0; color: var(--text-color);">No se encontraron productos que coincidan con tus filtros.</h3>
                     <p style="margin: 0 0 1.5rem 0;">¿No encuentras lo que buscas?</p>
-                    <button onclick="window.open('https://wa.me/595981124456?text=${encodeURIComponent('Hola, no encuentro el producto que busco en la tienda. ¿Podrían ayudarme?')}', '_blank')" style="background: #25D366; color: white; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">📱 Solicitar cotización por WhatsApp</button>
+                    <button onclick="window.open('https://wa.me/595984529505?text=${encodeURIComponent('Hola, no encuentro el producto que busco en la tienda. ¿Podrían ayudarme?')}', '_blank')" style="background: #25D366; color: white; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 8px;">📱 Solicitar cotización por WhatsApp</button>
                 `;
                 
                 const productsGrid = document.querySelector('.products-grid');
@@ -485,7 +485,7 @@ let searchInput, sortSelect, priceSlider, filterCheckboxes;
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         const cartItems = cart.map(item => `${item.title} x${item.quantity} - ₲${(item.price * item.quantity).toLocaleString()}`).join('\n');
         const message = `Hola, me gustaría realizar el siguiente pedido:\n\n${cartItems}\n\nTotal: ₲${total.toLocaleString()}\n\n¿Podrían confirmar la disponibilidad y el proceso de pago?`;
-        window.open(`https://wa.me/595981124456?text=${encodeURIComponent(message)}`, '_blank');
+        window.open(`https://wa.me/595984529505?text=${encodeURIComponent(message)}`, '_blank');
     }
 
     function sortProducts(sortBy) {
