@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
 // Store functionality - Sistema de gestión de stock
 // Para modificar el stock, cambia el valor de 'stock' en cada producto
 // Si stock = 0, el producto aparecerá automáticamente como "agotado"
@@ -263,18 +264,20 @@ let searchInput, sortSelect, priceSlider, filterCheckboxes;
                     }
                 }
                 
-                // Agregar indicador de stock junto al precio (solo en las tarjetas, no en el modal)
+                // Agregar indicador de stock (solo en las tarjetas, no en el modal)
                 // Verificar que no estamos en el modal y que no es un elemento dentro del modal
                 if (!card.closest('#product-modal') && !card.id.includes('modal')) {
                     let stockIndicator = card.querySelector('.stock-indicator');
                     if (!stockIndicator) {
-                        stockIndicator = document.createElement('span');
+                        stockIndicator = document.createElement('div');
                         stockIndicator.className = 'stock-indicator';
-                        stockIndicator.style.marginLeft = '135px';
-                        stockIndicator.style.marginTop = '-40px';
+                        stockIndicator.style.marginTop = '8px';
+                        stockIndicator.style.fontSize = '0.9em';
+                        
+                        // Insertar después del precio, no dentro de él
                         const priceElement = card.querySelector('.product-price');
-                        if (priceElement) {
-                            priceElement.appendChild(stockIndicator);
+                        if (priceElement && priceElement.parentNode) {
+                            priceElement.parentNode.insertBefore(stockIndicator, priceElement.nextSibling);
                         } else {
                             // Si no existe .product-price, agregar al final de la tarjeta
                             card.appendChild(stockIndicator);
@@ -817,6 +820,14 @@ let searchInput, sortSelect, priceSlider, filterCheckboxes;
         if (existingStockIndicator) {
             existingStockIndicator.remove();
         }
+        
+        // Eliminar cualquier elemento de stock que pueda estar en el modal
+        const allStockElements = modal.querySelectorAll('.stock-indicator, .stock-status, .modal-stock-info');
+        allStockElements.forEach(element => element.remove());
+        
+        // Limpiar el contenido del precio para asegurar que no tenga texto de stock
+        priceElement.innerHTML = price;
+        
         
         // Crear nuevo elemento de información de stock
         const stockInfo = document.createElement('div');
