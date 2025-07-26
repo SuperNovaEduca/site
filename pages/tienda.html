@@ -61,10 +61,6 @@
                     <span class="mobile-action-icon">🛒</span>
                     <span>Carrito</span>
                 </button>
-                <button class="mobile-action-item" id="mobile-theme-toggle">
-                    <span class="mobile-action-icon">🌙</span>
-                    <span>Tema</span>
-                </button>
             </div>
             
             <div class="mobile-panel-contact">
@@ -122,9 +118,13 @@
             
             <div class="store-layout">
                 <div class="filters-sidebar">
-                    <h3>Filtros</h3>
-                    
-                    <div class="filter-group">
+                    <button class="filters-toggle" id="filters-toggle">
+                        🔍 Mostrar Filtros
+                    </button>
+                    <div class="filters-content" id="filters-content">
+                        <h3>Filtros</h3>
+                        
+                        <div class="filter-group">
                         <h4>Categorías</h4>
                         <div class="filter-options">
                             <label><input type="checkbox" id="category-all" checked> Todos</label>
@@ -158,9 +158,10 @@
                         </div>
                     </div>
                     
-                    <div class="filter-actions">
-                        <button class="btn btn-primary filter-apply" id="applyFilters">Aplicar Filtros</button>
-                        <button class="btn btn-secondary filter-reset" id="resetFilters">Restablecer</button>
+                        <div class="filter-actions">
+                            <button class="btn btn-primary filter-apply" id="applyFilters">Aplicar Filtros</button>
+                            <button class="btn btn-secondary filter-reset" id="resetFilters">Restablecer</button>
+                        </div>
                     </div>
                 </div>
                 

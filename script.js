@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Store functionality - only initialize if we're on the store page
     if (document.querySelector('.product-card')) {
         initializeStore();
+        initializeFiltersToggle();
     }
     
     // Theme toggle functionality
@@ -148,12 +149,23 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateLogos(theme) {
         const headerLogo = document.querySelector('.brand-logo');
         const heroLogo = document.querySelector('.hero-logo');
+        const mobilePanelLogo = document.querySelector('.mobile-panel-logo');
         
         if (headerLogo) {
             if (theme === 'dark') {
-                headerLogo.src = 'images/heder alternativo.png';
+                // Check if we're in a subdirectory
+                if (window.location.pathname.includes('/pages/')) {
+                    headerLogo.src = '../images/header-alternativo.png';
+                } else {
+                    headerLogo.src = 'images/header-alternativo.png';
+                }
             } else {
-                headerLogo.src = 'images/SupernovaHeder.png';
+                // Check if we're in a subdirectory
+                if (window.location.pathname.includes('/pages/')) {
+                    headerLogo.src = '../images/SupernovaHeder.png';
+                } else {
+                    headerLogo.src = 'images/SupernovaHeder.png';
+                }
             }
         }
         
@@ -162,6 +174,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 heroLogo.src = 'images/bienvenido alternativo.png';
             } else {
                 heroLogo.src = 'images/Supernovabienvenido.png';
+            }
+        }
+        
+        // Update mobile panel logo based on theme
+        if (mobilePanelLogo) {
+            if (theme === 'dark') {
+                // Check if we're in a subdirectory
+                if (window.location.pathname.includes('/pages/')) {
+                    mobilePanelLogo.src = '../images/bienvenido alternativo.png';
+                } else {
+                    mobilePanelLogo.src = 'images/bienvenido alternativo.png';
+                }
+            } else {
+                // Check if we're in a subdirectory
+                if (window.location.pathname.includes('/pages/')) {
+                    mobilePanelLogo.src = '../images/Supernovabienvenido.png';
+                } else {
+                    mobilePanelLogo.src = 'images/Supernovabienvenido.png';
+                }
             }
         }
     }
@@ -1078,6 +1109,25 @@ function toggleMobileMenu() {
 // Utility function to format currency
 function formatCurrency(amount) {
     return `₲${amount.toLocaleString()}`;
+}
+
+// Initialize filters toggle for mobile
+function initializeFiltersToggle() {
+    const filtersToggle = document.getElementById('filters-toggle');
+    const filtersContent = document.getElementById('filters-content');
+    
+    if (filtersToggle && filtersContent) {
+        filtersToggle.addEventListener('click', function() {
+            filtersContent.classList.toggle('active');
+            
+            // Update button text
+            if (filtersContent.classList.contains('active')) {
+                filtersToggle.textContent = '🔍 Ocultar Filtros';
+            } else {
+                filtersToggle.textContent = '🔍 Mostrar Filtros';
+            }
+        });
+    }
 }
 
 // Utility function to debounce search input

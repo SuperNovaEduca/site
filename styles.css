@@ -223,10 +223,42 @@ body.mobile-panel-open {
 }
 
 .mobile-panel-header {
+    position: relative;
     text-align: center;
     margin-bottom: 30px;
     padding-bottom: 20px;
     border-bottom: 1px solid var(--border-color);
+}
+
+.mobile-panel-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.mobile-panel-close:hover {
+    background: var(--border-color);
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.mobile-panel-close span {
+    font-weight: bold;
+    line-height: 1;
 }
 
 .mobile-panel-logo {
@@ -1319,6 +1351,11 @@ body.mobile-panel-open {
     background: #e0e0e0;
 }
 
+/* Hide filters toggle button on desktop */
+.filters-toggle {
+    display: none;
+}
+
 [data-theme="light"] .filter-apply {
     background: var(--primary-color);
     color: white;
@@ -1695,6 +1732,45 @@ body.mobile-panel-open {
     
     .filters-sidebar {
         position: static;
+        margin-bottom: 20px;
+    }
+    
+    .filters-toggle {
+        display: block;
+        width: 100%;
+        padding: 12px 20px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+    }
+    
+    .filters-toggle:hover {
+        background: var(--secondary-color);
+    }
+    
+    .filters-content {
+        display: none;
+        animation: slideDown 0.3s ease;
+    }
+    
+    .filters-content.active {
+        display: block;
+    }
+    
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
     
     .search-input {
