@@ -8,29 +8,88 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <span class="brand-icon">🚀</span>
-                <span class="brand-text">Supernova Educación</span>
-            </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="../index.html" class="nav-link">Inicio</a>
-                <a href="../pages/proyectos.html" class="nav-link active">Proyectos</a>
-                <a href="../pages/tienda.html" class="nav-link">Tienda</a>
-                <a href="../pages/cursos.html" class="nav-link">Cursos</a>
-            </div>
-            <div class="nav-actions">
-                <span class="toggle-icon" id="theme-toggle">🌙</span>
-                <div class="hamburger" id="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="../images/header-alternativo.png" alt="Supernova Educación" class="brand-logo" id="brand-logo">
+                </div>
+                <div class="nav-menu">
+                    <a href="../index.html" class="nav-link">Inicio</a>
+                    <a href="../pages/proyectos.html" class="nav-link active">Proyectos</a>
+                    <a href="../pages/tienda.html" class="nav-link">Tienda</a>
+                    <a href="../pages/cursos.html" class="nav-link">Cursos</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-toggle">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
+        </nav>
+    </header>
+
+    <!-- Extended Mobile Panel -->
+    <div class="mobile-panel" id="mobile-panel">
+        <div class="mobile-panel-content">
+            <div class="mobile-panel-header">
+                <img src="../images/bienvenido alternativo.png" alt="Supernova" class="mobile-panel-logo" id="mobile-panel-logo">
+                <button class="mobile-panel-close" id="mobile-panel-close">
+                    <span>✕</span>
+                </button>
+            </div>
+            
+            <nav class="mobile-panel-nav">
+                <a href="../index.html" class="mobile-nav-link">🏠 Inicio</a>
+                <a href="../pages/proyectos.html" class="mobile-nav-link active">🚀 Proyectos</a>
+                <a href="../pages/tienda.html" class="mobile-nav-link">🛒 Tienda</a>
+                <a href="../pages/cursos.html" class="mobile-nav-link">📚 Cursos</a>
+            </nav>
+            
+            <div class="mobile-panel-actions">
+                <button class="mobile-action-btn" id="mobile-theme-toggle">
+                    <span class="mobile-theme-icon">🌙</span>
+                    <span class="mobile-action-text">Tema</span>
+                </button>
+            </div>
+            
+            <div class="mobile-panel-contact">
+                <h3>Contacto</h3>
+                <div class="mobile-contact-item">
+                    <span class="mobile-contact-icon">📱</span>
+                    <a href="tel:+595984529505">+595 984 529 505</a>
+                </div>
+                <div class="mobile-contact-item">
+                    <span class="mobile-contact-icon">📧</span>
+                    <a href="mailto:info@supernova.com.py">info@supernova.com.py</a>
+                </div>
+                <div class="mobile-contact-item">
+                    <span class="mobile-contact-icon">📍</span>
+                    <span>Ciudad del Este, Paraguay</span>
+                </div>
+            </div>
+            
+            <div class="mobile-panel-social">
+                <h3>Síguenos</h3>
+                <div class="mobile-social-links">
+                    <a href="#" class="mobile-social-link">📘 Facebook</a>
+                    <a href="#" class="mobile-social-link">📷 Instagram</a>
+                    <a href="#" class="mobile-social-link">🐦 Twitter</a>
+                    <a href="#" class="mobile-social-link">💼 LinkedIn</a>
+                </div>
+            </div>
+            
+            <div class="mobile-panel-footer">
+                <p>&copy; 2024 Supernova Educación. Todos los derechos reservados.</p>
+            </div>
         </div>
-    </nav>
+    </div>
 
     <!-- Projects Hero Section -->
     <section class="courses-hero">
@@ -158,31 +217,6 @@
 
     <script src="../script.js"></script>
     <script>
-
-        // Mobile Navigation
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
 
         // YouTube Modal Functions
         function openYouTubeModal(videoId) {

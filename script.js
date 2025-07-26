@@ -90,6 +90,16 @@ document.addEventListener('DOMContentLoaded', function() {
             themeToggle.textContent = '🌙';
         }
         
+        // Update mobile panel theme toggle on page load
+        const mobilePanelThemeToggle = document.querySelector('.mobile-panel-theme-toggle');
+        if (mobilePanelThemeToggle) {
+            if (savedTheme === 'dark') {
+                mobilePanelThemeToggle.textContent = '☀️';
+            } else {
+                mobilePanelThemeToggle.textContent = '🌙';
+            }
+        }
+        
         // Update logos on page load
         updateLogos(savedTheme);
     }
@@ -156,17 +166,81 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Mobile Navigation
+    // Mobile Navigation with Extended Panel
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.querySelector('.nav-menu');
+    const mobilePanel = document.querySelector('.mobile-panel');
+    const mobilePanelClose = document.querySelector('.mobile-panel-close');
 
-    if (hamburger && navMenu) {
+    if (hamburger && mobilePanel) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobilePanel.classList.toggle('active');
+            document.body.classList.toggle('mobile-panel-open');
+        });
+
+        // Close mobile panel with close button
+        if (mobilePanelClose) {
+            mobilePanelClose.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobilePanel.classList.remove('active');
+                document.body.classList.remove('mobile-panel-open');
+            });
+        }
+
+        // Close mobile panel when clicking on a navigation link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobilePanel.classList.remove('active');
+                document.body.classList.remove('mobile-panel-open');
+            });
+        });
+
+        // Close mobile panel when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!hamburger.contains(event.target) && !mobilePanel.contains(event.target)) {
+                hamburger.classList.remove('active');
+                mobilePanel.classList.remove('active');
+                document.body.classList.remove('mobile-panel-open');
+            }
+        });
+
+        // Update mobile panel theme toggle
+        const mobilePanelThemeToggle = document.querySelector('.mobile-panel-theme-toggle');
+        if (mobilePanelThemeToggle) {
+            mobilePanelThemeToggle.addEventListener('click', () => {
+                const currentTheme = html.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                html.setAttribute('data-theme', newTheme);
+                
+                // Update both toggle icons
+                const mainThemeToggle = document.getElementById('theme-toggle');
+                if (newTheme === 'dark') {
+                    if (mainThemeToggle) mainThemeToggle.textContent = '☀️';
+                    mobilePanelThemeToggle.textContent = '☀️';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    if (mainThemeToggle) mainThemeToggle.textContent = '🌙';
+                    mobilePanelThemeToggle.textContent = '🌙';
+                    localStorage.setItem('theme', 'light');
+                }
+                
+                // Update logos and navbar
+                updateLogos(newTheme);
+                updateNavbarBackground();
+            });
+        }
+    }
+
+    // Legacy support for old nav-menu
+    if (hamburger && navMenu && !mobilePanel) {
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -174,7 +248,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
             if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
                 hamburger.classList.remove('active');
