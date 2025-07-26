@@ -15,14 +15,19 @@
                 <span class="brand-icon">🚀</span>
                 <span class="brand-text">Supernova Educación</span>
             </div>
-            <div class="nav-menu">
+            <div class="nav-menu" id="navMenu">
                 <a href="../index.html" class="nav-link">Inicio</a>
                 <a href="../pages/proyectos.html" class="nav-link active">Proyectos</a>
                 <a href="../pages/tienda.html" class="nav-link">Tienda</a>
                 <a href="../pages/cursos.html" class="nav-link">Cursos</a>
             </div>
-            <div class="nav-toggle">
+            <div class="nav-actions">
                 <span class="toggle-icon" id="theme-toggle">🌙</span>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
@@ -81,7 +86,10 @@
                 <!-- Project 4 -->
                 <div class="project-card" onclick="openYouTubeModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
                     <div class="project-image">
-                        <img src="../images/robotics-classroom.svg" alt="Aula de Robótica" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="placeholder-project">
+                            <span class="project-icon">🤖</span>
+                            <span class="placeholder-text">Aula de Robótica</span>
+                        </div>
                         <div class="play-overlay">
                             <div class="play-button">▶</div>
                         </div>
@@ -93,7 +101,10 @@
                 <!-- Project 5 -->
                 <div class="project-card" onclick="openYouTubeModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
                     <div class="project-image">
-                        <img src="../images/3d-printing.svg" alt="Impresión 3D" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="placeholder-project">
+                            <span class="project-icon">🖨️</span>
+                            <span class="placeholder-text">Impresión 3D</span>
+                        </div>
                         <div class="play-overlay">
                             <div class="play-button">▶</div>
                         </div>
@@ -105,7 +116,10 @@
                 <!-- Project 6 -->
                 <div class="project-card" onclick="openYouTubeModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
                     <div class="project-image">
-                        <img src="../images/solar-light.svg" alt="Energía Solar" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div class="placeholder-project">
+                            <span class="project-icon">☀️</span>
+                            <span class="placeholder-text">Energía Solar</span>
+                        </div>
                         <div class="play-overlay">
                             <div class="play-button">▶</div>
                         </div>
@@ -203,6 +217,31 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeYouTubeModal();
+            }
+        });
+
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
             }
         });
     </script>

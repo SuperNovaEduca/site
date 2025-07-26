@@ -83,11 +83,47 @@ body {
     color: var(--primary-color);
 }
 
-.nav-toggle {
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.toggle-icon {
     font-size: 20px;
     cursor: pointer;
     color: var(--text-color);
     transition: color 0.3s ease;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-color);
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 /* Hero Section */
@@ -308,6 +344,38 @@ body {
 .project-image {
     position: relative;
     cursor: pointer;
+}
+
+/* Project Placeholders */
+.placeholder-project {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--border-color) 0%, rgba(79, 156, 249, 0.1) 100%);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.project-icon {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.placeholder-text {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.project-card:hover .placeholder-project {
+    background: linear-gradient(135deg, rgba(79, 156, 249, 0.2) 0%, rgba(79, 156, 249, 0.3) 100%);
+    transform: scale(1.02);
 }
 
 .play-overlay {
@@ -1730,6 +1798,70 @@ body {
 
 /* Responsive Design for Modals */
 @media (max-width: 768px) {
+    /* Mobile Navigation */
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--navbar-bg);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 50px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-link {
+        font-size: 1.2rem;
+        margin: 20px 0;
+        padding: 15px 30px;
+        width: 80%;
+        text-align: center;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover {
+        background: rgba(79, 156, 249, 0.1);
+    }
+    
+    .nav-link.active {
+        background: rgba(79, 156, 249, 0.2);
+        color: var(--primary-color);
+    }
+    
+    .nav-brand .brand-text {
+        display: none;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    /* Projects Grid Mobile */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-top: 40px;
+    }
+    
+    .project-card {
+        margin: 0 10px;
+    }
+    
     .modal-content {
         width: 95%;
         margin: 2% auto;
