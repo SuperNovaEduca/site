@@ -524,6 +524,18 @@ body {
     box-shadow: 0 8px 25px rgba(79, 156, 249, 0.3);
 }
 
+
+   .team-member:nth-child(2) .member-avatar img {
+       transform: translateX(-6px); // Ajusta el valor según necesites
+   }
+
+
+/* Ajuste para eliminar el espacio gris en la foto de Robert */
+.team-member:nth-child(2) .member-avatar {
+    background: #6194c9; /* Color azul cielo similar al fondo de la foto */
+}
+
+
 .avatar-placeholder {
     color: #718096;
     font-size: 0.9rem;
