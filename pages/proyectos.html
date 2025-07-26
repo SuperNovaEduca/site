@@ -48,93 +48,38 @@
         <div class="container">
             <div class="projects-grid">
                 <!-- Project 1: SmartTouch -->
-                <div class="project-card" onclick="openYouTubeModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+                <div class="project-card">
                     <div class="project-image">
                         <img src="../images/smarttouch.jpg" alt="SmartTouch" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="play-overlay">
-                            <div class="play-button">▶</div>
-                        </div>
                     </div>
                     <h3 class="project-title">SmartTouch</h3>
                     <p class="project-description">Sistema interactivo de control táctil que permite la gestión intuitiva de dispositivos electrónicos mediante una interfaz moderna y responsiva.</p>
                 </div>
 
                 <!-- Project 2: TechVoyage -->
-                <div class="project-card" onclick="openYouTubeModal('https://youtu.be/eIlc_r2NLcQ?si=gqTnyqX5hpIy1HQ7')">
+                <div class="project-card">
                     <div class="project-image">
                         <img src="../images/techvoyage.jpg" alt="TechVoyage" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="play-overlay">
-                            <div class="play-button">▶</div>
-                        </div>
                     </div>
                     <h3 class="project-title">TechVoyage</h3>
                     <p class="project-description">Plataforma educativa inmersiva que guía a los estudiantes a través de un viaje tecnológico interactivo, combinando teoría y práctica.</p>
                 </div>
 
                 <!-- Project 3: Un Litro de Luz -->
-                <div class="project-card" onclick="openYouTubeModal('https://youtu.be/mqhqTruwY3A?si=V0i2C7wb3dmulDSE')">
+                <div class="project-card">
                     <div class="project-image">
                         <img src="../images/unlitrodeluz.jpg" alt="Un Litro de Luz" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="play-overlay">
-                            <div class="play-button">▶</div>
-                        </div>
                     </div>
                     <h3 class="project-title">Un Litro de Luz</h3>
                     <p class="project-description">Proyecto de energía solar sostenible que proporciona iluminación ecológica utilizando tecnología LED y paneles solares de bajo costo.</p>
                 </div>
 
-                <!-- Project 4 -->
-                <div class="project-card" onclick="openYouTubeModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                    <div class="project-image">
-                        <div class="placeholder-project">
-                            <span class="project-icon">🤖</span>
-                            <span class="placeholder-text">Aula de Robótica</span>
-                        </div>
-                        <div class="play-overlay">
-                            <div class="play-button">▶</div>
-                        </div>
-                    </div>
-                    <h3 class="project-title">Aula de Robótica Interactiva</h3>
-                    <p class="project-description">Un espacio educativo completamente equipado con estaciones de trabajo para el aprendizaje práctico de robótica y programación.</p>
-                </div>
 
-                <!-- Project 5 -->
-                <div class="project-card" onclick="openYouTubeModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                    <div class="project-image">
-                        <div class="placeholder-project">
-                            <span class="project-icon">🖨️</span>
-                            <span class="placeholder-text">Impresión 3D</span>
-                        </div>
-                        <div class="play-overlay">
-                            <div class="play-button">▶</div>
-                        </div>
-                    </div>
-                    <h3 class="project-title">Laboratorio de Impresión 3D</h3>
-                    <p class="project-description">Espacio dedicado al diseño y fabricación de prototipos usando tecnología de impresión 3D para proyectos educativos.</p>
-                </div>
 
-                <!-- Project 6 -->
-                <div class="project-card" onclick="openYouTubeModal('https://www.youtube.com/embed/dQw4w9WgXcQ')">
-                    <div class="project-image">
-                        <div class="placeholder-project">
-                            <span class="project-icon">☀️</span>
-                            <span class="placeholder-text">Energía Solar</span>
-                        </div>
-                        <div class="play-overlay">
-                            <div class="play-button">▶</div>
-                        </div>
-                    </div>
-                    <h3 class="project-title">Sistema de Energía Solar Educativo</h3>
-                    <p class="project-description">Proyecto de energías renovables que enseña principios de sostenibilidad y tecnología verde a los estudiantes.</p>
-                </div>
-
-                <!-- Project 7: MIRA -->
-                <div class="project-card" onclick="openYouTubeModal('https://youtu.be/bsaA29JiTmQ?si=VG76UcizFzKldiml')">
+                <!-- Project 4: MIRA -->
+                <div class="project-card">
                     <div class="project-image">
                         <img src="../images/Mira.jpg" alt="MIRA" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="play-overlay">
-                            <div class="play-button">▶</div>
-                        </div>
                     </div>
                     <h3 class="project-title">MIRA</h3>
                     <p class="project-description">Monitoría Integrada de Recursos Acuáticos - Sistema avanzado de monitoreo y análisis de calidad del agua que utiliza sensores IoT y tecnología de datos para la gestión sostenible de recursos hídricos y la protección del medio ambiente acuático.</p>
@@ -191,46 +136,8 @@
         </div>
     </footer>
 
-    <!-- YouTube Modal -->
-    <div id="youtubeModal" class="youtube-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeYouTubeModal()">&times;</span>
-            <iframe id="youtubeFrame" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
-        </div>
-    </div>
-
     <script src="../script.js"></script>
     <script>
-        function openYouTubeModal(videoUrl) {
-            const modal = document.getElementById('youtubeModal');
-            const iframe = document.getElementById('youtubeFrame');
-            iframe.src = videoUrl + '?autoplay=1';
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeYouTubeModal() {
-            const modal = document.getElementById('youtubeModal');
-            const iframe = document.getElementById('youtubeFrame');
-            iframe.src = '';
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Cerrar modal al hacer clic fuera del contenido
-        window.onclick = function(event) {
-            const modal = document.getElementById('youtubeModal');
-            if (event.target === modal) {
-                closeYouTubeModal();
-            }
-        }
-
-        // Cerrar modal con la tecla Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeYouTubeModal();
-            }
-        });
 
         // Mobile Navigation
         const hamburger = document.getElementById('hamburger');
