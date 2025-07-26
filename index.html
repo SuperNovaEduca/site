@@ -12,8 +12,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <span class="brand-icon">🚀</span>
-                <span class="brand-text">Supernova Educación</span>
+                <img src="images/SupernovaHeder.png" alt="Supernova Educación" class="brand-logo">
             </div>
             <div class="nav-menu">
                 <a href="#inicio" class="nav-link">Inicio</a>
@@ -35,7 +34,10 @@
             <img src="images/hero-background.svg" alt="Hero Background" class="hero-bg-image">
         </div>
         <div class="hero-content">
-            <h1 class="hero-title">Bienvenido a Supernova</h1>
+            <h1 class="hero-title">
+                <span class="hero-text">Bienvenido a</span>
+                <img src="images/Supernovabienvenido.png" alt="Supernova" class="hero-logo">
+            </h1>
             <p class="hero-subtitle">Innova. Construye. Compite. Aprende.</p>
             <div class="hero-buttons">
                 <button class="btn btn-secondary" onclick="window.location.href='pages/proyectos.html'">Nuestro Trabajo</button>
@@ -87,22 +89,22 @@
             <p class="section-subtitle">Somos un equipo apasionado de innovadores y solucionadores de problemas dedicados a superar los límites de la robótica.</p>
             
             <div class="team-grid">
-                <div class="team-member">
+                <div class="team-member" onclick="openCurriculumModal('alejandro')">
                     <div class="member-avatar">
                         <img src="images/Alejandro Portillo.jpg" alt="Alejandro Portilla">
                     </div>
                     <h3 class="member-name">Alejandro Portillo</h3>
                     <p class="member-role">Fundador</p>
-                    <a href="https://www.instagram.com/pinchyportillo" target="_blank" class="member-handle">@pinchyportillo</a>
+                    <a href="https://www.instagram.com/pinchyportillo" target="_blank" class="member-handle" onclick="event.stopPropagation()">@pinchyportillo</a>
                 </div>
                 
-                <div class="team-member">
+                <div class="team-member" onclick="openCurriculumModal('robert')">
                     <div class="member-avatar">
                         <img src="images/Robert salinas.png" alt="Robert Salinas">
                     </div>
                     <h3 class="member-name">Robert Salinas</h3>
                     <p class="member-role">Co-líder y Programador Principal</p>
-                    <a href="https://www.instagram.com/robert_salinas.dev" target="_blank" class="member-handle">@robert.salinas.dev</a>
+                    <a href="https://www.instagram.com/robert_salinas.dev" target="_blank" class="member-handle" onclick="event.stopPropagation()">@robert.salinas.dev</a>
                 </div>
             </div>
             
@@ -181,6 +183,133 @@
             </div>
         </div>
     </footer>
+
+    <!-- Curriculum Modal -->
+    <div id="curriculumModal" class="curriculum-modal">
+        <div class="curriculum-modal-content">
+            <span class="curriculum-close" onclick="closeCurriculumModal()">&times;</span>
+            <div class="curriculum-container" id="curriculumContainer">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        // Curriculum Modal Functions
+        function openCurriculumModal(person) {
+            const modal = document.getElementById('curriculumModal');
+            const container = document.getElementById('curriculumContainer');
+            
+            let content = '';
+            
+            if (person === 'alejandro') {
+                content = `
+                    <div class="curriculum-header">
+                        <img src="images/Alejandro Portillo.jpg" alt="Alejandro Portillo" class="curriculum-photo">
+                        <div class="curriculum-info">
+                            <h2>Alejandro Portillo</h2>
+                            <h3>Fundador de Supernova Educación</h3>
+                            <p class="curriculum-contact">📧 alejandro@supernova.com.py | 📱 +595 984529505</p>
+                        </div>
+                    </div>
+                    <div class="curriculum-body">
+                        <div class="curriculum-section">
+                            <h4>🎯 Perfil Profesional</h4>
+                            <p>Emprendedor y educador apasionado por la tecnología educativa y la robótica. Fundador de Supernova Educación, dedicado a democratizar el acceso a la educación tecnológica de calidad.</p>
+                        </div>
+                        <div class="curriculum-section">
+                            <h4>🏆 Logros Destacados</h4>
+                            <ul>
+                                <li>Fundador de Supernova Educación (2023)</li>
+                                <li>Proyecto Destacado en la Expo Educación 2024</li>
+                                <li>Reconocimiento del Centro de Sabiduría Mundial a nivel Latinoamérica</li>
+                                <li>Trofeo Core Values de FLL Paraguay</li>
+                            </ul>
+                        </div>
+                        <div class="curriculum-section">
+                            <h4>💡 Proyectos Liderados</h4>
+                            <ul>
+                                <li><strong>Un Litro de Luz:</strong> Iniciativa de energía solar sostenible</li>
+                                <li><strong>Tech Voyage:</strong> Reciclaje de computadoras con Linux</li>
+                                <li><strong>SmartTouch:</strong> Sistema de aprendizaje interactivo</li>
+                            </ul>
+                        </div>
+                        <div class="curriculum-section">
+                            <h4>🎓 Educación y Certificaciones</h4>
+                            <ul>
+                                <li>Especialización en Robótica Educativa</li>
+                                <li>Certificación en Metodologías de Enseñanza STEAM</li>
+                                <li>Participación en competencias nacionales e internacionales</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (person === 'robert') {
+                content = `
+                    <div class="curriculum-header">
+                        <img src="images/Robert salinas.png" alt="Robert Salinas" class="curriculum-photo">
+                        <div class="curriculum-info">
+                            <h2>Robert Salinas</h2>
+                            <h3>Co-líder y Programador Principal</h3>
+                            <p class="curriculum-contact">📧 robert@supernova.com.py | 📱 +595 984529505</p>
+                        </div>
+                    </div>
+                    <div class="curriculum-body">
+                        <div class="curriculum-section">
+                            <h4>🎯 Perfil Profesional</h4>
+                            <p>Desarrollador Full-Stack especializado en tecnologías educativas y sistemas embebidos. Co-líder técnico de Supernova Educación con experiencia en Arduino, IoT y desarrollo web.</p>
+                        </div>
+                        <div class="curriculum-section">
+                            <h4>💻 Habilidades Técnicas</h4>
+                            <ul>
+                                <li><strong>Programación:</strong> Python, JavaScript, C++, HTML/CSS</li>
+                                <li><strong>Plataformas:</strong> Arduino, Raspberry Pi, ESP32</li>
+                                <li><strong>Desarrollo Web:</strong> React, Node.js, Express</li>
+                                <li><strong>Bases de Datos:</strong> MySQL, MongoDB</li>
+                                <li><strong>Herramientas:</strong> Git, VS Code, Figma</li>
+                            </ul>
+                        </div>
+                        <div class="curriculum-section">
+                            <h4>🏆 Logros Destacados</h4>
+                            <ul>
+                                <li>Campeonato Departamental y Nacional en Olimpiada de Scratch 2024</li>
+                                <li>Mejor Proyecto Innovador en Pequeños Inventores</li>
+                                <li>Desarrollo del sistema MIRA para monitoreo acuático</li>
+                                <li>Acreditación para Competencia Nacional de Semilleros en Colombia</li>
+                            </ul>
+                        </div>
+                        <div class="curriculum-section">
+                            <h4>💡 Proyectos Desarrollados</h4>
+                            <ul>
+                                <li><strong>MIRA:</strong> Sistema IoT de monitoreo de calidad del agua</li>
+                                <li><strong>SmartTouch:</strong> Interfaz táctil con Makey Makey</li>
+                                <li><strong>Plataforma Web:</strong> Sistema de gestión educativa</li>
+                                <li><strong>Tienda Online:</strong> E-commerce de componentes electrónicos</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = content;
+             modal.classList.add('show');
+             document.body.style.overflow = 'hidden';
+        }
+        
+        function closeCurriculumModal() {
+             const modal = document.getElementById('curriculumModal');
+             modal.classList.remove('show');
+             document.body.style.overflow = 'auto';
+         }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('curriculumModal');
+            if (event.target === modal) {
+                closeCurriculumModal();
+            }
+        }
+    </script>
 </body>
 </html>

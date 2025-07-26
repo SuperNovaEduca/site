@@ -63,6 +63,12 @@ body {
     transition: color 0.3s ease;
 }
 
+.brand-logo {
+    height: 130px;
+    width: auto;
+    object-fit: contain;
+}
+
 .brand-icon {
     font-size: 24px;
 }
@@ -177,10 +183,27 @@ body {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
     margin-bottom: 20px;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.hero-text {
     background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.hero-logo {
+    height: clamp(8rem, 15vw, 16rem);
+    width: auto;
+    object-fit: contain;
+    max-width: 95%;
 }
 
 .hero-subtitle {
@@ -427,48 +450,67 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(5px);
-    align-items: center;
-    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(8px);
     animation: fadeIn 0.3s ease;
 }
 
-.modal-content {
-    position: relative;
-    width: 90%;
-    max-width: 900px;
-    height: 70%;
-    max-height: 600px;
-    background: #000;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    animation: slideIn 0.3s ease;
+.youtube-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.close-modal {
+.youtube-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.7);
+    animation: slideIn 0.4s ease;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.youtube-video-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.youtube-video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 16px;
+}
+
+.youtube-close {
     position: absolute;
-    top: -40px;
+    top: -50px;
     right: 0;
     color: white;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     cursor: pointer;
     z-index: 10000;
-    background: rgba(0, 0, 0, 0.7);
-    width: 40px;
-    height: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.close-modal:hover {
+.youtube-close:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 @keyframes fadeIn {
@@ -484,6 +526,214 @@ body {
     to { 
         opacity: 1;
         transform: scale(1) translateY(0);
+    }
+}
+
+/* Curriculum Modal */
+.curriculum-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.3s ease;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.curriculum-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.curriculum-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    background: var(--bg-color);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8);
+    animation: slideIn 0.4s ease;
+    border: 2px solid var(--border-color);
+}
+
+.curriculum-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: var(--text-color);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    background: var(--border-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+}
+
+.curriculum-close:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.curriculum-container {
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.curriculum-header {
+    background: linear-gradient(135deg, var(--primary-color), #667eea);
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    color: white;
+}
+
+.curriculum-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.curriculum-info h2 {
+    margin: 0 0 5px 0;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.curriculum-info h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+.curriculum-contact {
+    margin: 0;
+    opacity: 0.8;
+    font-size: 0.95rem;
+}
+
+.curriculum-body {
+    padding: 30px;
+    background: var(--bg-color);
+}
+
+.curriculum-section {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.curriculum-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.curriculum-section h4 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.curriculum-section p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.curriculum-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.curriculum-section li {
+    color: var(--text-secondary);
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+}
+
+.curriculum-section li:before {
+    content: '▶';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 8px;
+    font-size: 0.8rem;
+}
+
+.curriculum-section li strong {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+/* Team member hover effect for curriculum */
+.team-member {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.team-member:hover {
+    background: var(--border-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive design for curriculum modal */
+@media (max-width: 768px) {
+    .curriculum-modal {
+        padding: 10px;
+    }
+    
+    .curriculum-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 25px 20px;
+    }
+    
+    .curriculum-photo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .curriculum-info h2 {
+        font-size: 1.6rem;
+    }
+    
+    .curriculum-body {
+        padding: 20px;
+    }
+    
+    .curriculum-section h4 {
+        font-size: 1.1rem;
     }
 }
 
