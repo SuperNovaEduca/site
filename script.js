@@ -145,56 +145,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Update logos based on theme
+    // Función optimizada para actualizar logos
     function updateLogos(theme) {
-        const headerLogo = document.querySelector('.brand-logo');
-        const heroLogo = document.querySelector('.hero-logo');
-        const mobilePanelLogo = document.querySelector('.mobile-panel-logo');
+        const isSubdirectory = window.location.pathname.includes('/pages/');
+        const pathPrefix = isSubdirectory ? '../images/' : 'images/';
         
-        if (headerLogo) {
-            if (theme === 'dark') {
-                // Check if we're in a subdirectory
-                if (window.location.pathname.includes('/pages/')) {
-                    headerLogo.src = '../images/header-alternativo.png';
-                } else {
-                    headerLogo.src = 'images/header-alternativo.png';
-                }
-            } else {
-                // Check if we're in a subdirectory
-                if (window.location.pathname.includes('/pages/')) {
-                    headerLogo.src = '../images/SupernovaHeder.png';
-                } else {
-                    headerLogo.src = 'images/SupernovaHeder.png';
-                }
+        const logoConfigs = {
+            '.logo-supernova-header': {
+                dark: 'header-alternativo.png',
+                light: 'SupernovaHeder.png'
+            },
+            '.logo-header-alternativo': {
+                dark: 'header-alternativo.png',
+                light: 'SupernovaHeder.png'
+            },
+            '.logo-supernova-bienvenido': {
+                dark: 'bienvenido alternativo.png',
+                light: 'Supernovabienvenido.png'
+            },
+            '.logo-bienvenido-alternativo': {
+                dark: 'bienvenido alternativo.png',
+                light: 'Supernovabienvenido.png'
+            },
+            '.logo-mobile-panel': {
+                dark: 'bienvenido alternativo.png',
+                light: 'Supernovabienvenido.png'
             }
-        }
+        };
         
-        if (heroLogo) {
-            if (theme === 'dark') {
-                heroLogo.src = 'images/bienvenido alternativo.png';
-            } else {
-                heroLogo.src = 'images/Supernovabienvenido.png';
+        Object.entries(logoConfigs).forEach(([selector, config]) => {
+            const element = document.querySelector(selector);
+            if (element) {
+                const imageName = config[theme];
+                element.src = selector.includes('bienvenido') && !isSubdirectory 
+                    ? `images/${imageName}` 
+                    : `${pathPrefix}${imageName}`;
             }
-        }
-        
-        // Update mobile panel logo based on theme
-        if (mobilePanelLogo) {
-            if (theme === 'dark') {
-                // Check if we're in a subdirectory
-                if (window.location.pathname.includes('/pages/')) {
-                    mobilePanelLogo.src = '../images/bienvenido alternativo.png';
-                } else {
-                    mobilePanelLogo.src = 'images/bienvenido alternativo.png';
-                }
-            } else {
-                // Check if we're in a subdirectory
-                if (window.location.pathname.includes('/pages/')) {
-                    mobilePanelLogo.src = '../images/Supernovabienvenido.png';
-                } else {
-                    mobilePanelLogo.src = 'images/Supernovabienvenido.png';
-                }
-            }
-        }
+        });
     }
     
     // Mobile Navigation with Extended Panel
@@ -202,6 +189,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     const mobilePanel = document.querySelector('.mobile-panel');
     const mobilePanelClose = document.querySelector('.mobile-panel-close');
+
+    // Función optimizada para manejar el panel móvil
+    function closeMobilePanel() {
+        if (hamburger) hamburger.classList.remove('active');
+        if (mobilePanel) mobilePanel.classList.remove('active');
+        document.body.classList.remove('mobile-panel-open');
+    }
 
     if (hamburger && mobilePanel) {
         hamburger.addEventListener('click', function() {
@@ -212,28 +206,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Close mobile panel with close button
         if (mobilePanelClose) {
-            mobilePanelClose.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                mobilePanel.classList.remove('active');
-                document.body.classList.remove('mobile-panel-open');
-            });
+            mobilePanelClose.addEventListener('click', closeMobilePanel);
         }
 
         // Close mobile panel when clicking on a navigation link
         document.querySelectorAll('.mobile-nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobilePanel.classList.remove('active');
-                document.body.classList.remove('mobile-panel-open');
-            });
+            link.addEventListener('click', closeMobilePanel);
         });
 
         // Close mobile panel when clicking outside
         document.addEventListener('click', function(event) {
             if (!hamburger.contains(event.target) && !mobilePanel.contains(event.target)) {
-                hamburger.classList.remove('active');
-                mobilePanel.classList.remove('active');
-                document.body.classList.remove('mobile-panel-open');
+                closeMobilePanel();
             }
         });
 
@@ -265,27 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Legacy support for old nav-menu
-    if (hamburger && navMenu && !mobilePanel) {
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        document.addEventListener('click', function(event) {
-            if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
-    }
+    // Código legacy eliminado - ya no se utiliza
 });
 
 
@@ -1100,11 +1064,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Mobile menu toggle (for future implementation)
-function toggleMobileMenu() {
-    const navMenu = document.querySelector('.nav-menu');
-    navMenu.classList.toggle('mobile-active');
-}
+// Función eliminada - no se utiliza en ningún lugar
 
 // Utility function to format currency
 function formatCurrency(amount) {
