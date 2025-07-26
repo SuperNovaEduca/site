@@ -344,6 +344,8 @@ body {
     box-shadow: 0 15px 40px rgba(79, 156, 249, 0.3), 
                 0 0 30px rgba(255, 107, 107, 0.2);
     border-color: transparent;
+}
+
 .project-image {
     width: 100%;
     height: 250px;
