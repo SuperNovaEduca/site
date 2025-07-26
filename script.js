@@ -73,6 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.setItem('theme', 'light');
             }
             
+            // Update logos based on theme
+            updateLogos(newTheme);
+            
             // Update navbar background immediately
             updateNavbarBackground();
         });
@@ -86,6 +89,9 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             themeToggle.textContent = '🌙';
         }
+        
+        // Update logos on page load
+        updateLogos(savedTheme);
     }
 
     // Add scroll effect to navbar
@@ -124,6 +130,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 navbar.style.background = 'rgba(248, 250, 252, 0.95)';
             } else {
                 navbar.style.background = 'rgba(15, 20, 25, 0.95)';
+            }
+        }
+    }
+    
+    // Update logos based on theme
+    function updateLogos(theme) {
+        const headerLogo = document.querySelector('.brand-logo');
+        const heroLogo = document.querySelector('.hero-logo');
+        
+        if (headerLogo) {
+            if (theme === 'dark') {
+                headerLogo.src = 'images/heder alternativo.png';
+            } else {
+                headerLogo.src = 'images/SupernovaHeder.png';
+            }
+        }
+        
+        if (heroLogo) {
+            if (theme === 'dark') {
+                heroLogo.src = 'images/bienvenido alternativo.png';
+            } else {
+                heroLogo.src = 'images/Supernovabienvenido.png';
             }
         }
     }

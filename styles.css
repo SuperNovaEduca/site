@@ -64,7 +64,7 @@ body {
 }
 
 .brand-logo {
-    height: 130px;
+    height: 40px;
     width: auto;
     object-fit: contain;
 }
@@ -776,7 +776,7 @@ body {
 
 
    .team-member:nth-child(2) .member-avatar img {
-       transform: translateX(-6px); // Ajusta el valor según necesites
+       transform: translateX(-6px); /* Adjust value as needed */
    }
 
 
